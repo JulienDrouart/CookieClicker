@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie clicker</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" type="text/css" href="public/css/main.css">
+    <script src="public/js/main.js"></script>   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container"></div>
+    <div class="row">
+        <div class="col">
+            <span id="NbCookies">0 </span> Cookies
+            <br>
+            <span id="cookiePerSecond">0</span> par secondes
+
+
+            <button onclick="clickCookie()">Click me</button>
+        </div>
+        <div class="col">
+            Column 2
+        </div>
+        <div class="col">
+           Listes des bonus
+           
+           
+            Achats/Ventes
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Structure</th>
+                        <th>Prix</th>
+                        <th>Nombre</th>
+                        <th>Acheter</th>
+                        <th>Vendre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cursor</td>
+                        <td><span id="NbCursor">0</span></td>
+                        <td><span id="cursorCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="cursor" onclick="buyStructures('cursor')">Acheter un cursor</button></td>
+                        <td><button onclick="sellStructures('cursor')">Vendre un curseur</button></td>
+                    </tr>
+                    <tr>
+                        <td>Grandma</td>
+                        <td><span id="NbGrandma">0</span></td>
+                        <td><span id="grandmaCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="grandma" onclick="buyStructures('grandma')">Acheter une grandma</button></td>
+                        <td><button onclick="sellStructures('grandma')">Vendre une grand-mère</button></td>
+                    </tr>
+                    <tr>
+                        <td>Farm</td>
+                        <td><span id="NbFarm">0</span></td>
+                        <td><span id="farmCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="farm" onclick="buyStructures('farm')">Acheter une ferme</button></td>
+                        <td><button onclick="sellStructures('farm')">Vendre une ferme</button></td>
+                    </tr>
+                    <tr>
+                        <td>Mine</td>
+                        <td><span id="NbMine">0</span></td>
+                        <td><span id="mineCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="mine" onclick="buyStructures('mine')">Acheter une mine</button></td>
+                        <td><button onclick="sellStructures('mine')">Vendre une mine</button></td>
+                    </tr>
+                    <tr>
+                        <td>Factory</td>
+                        <td><span id="NbFactory">0</span></td>
+                        <td><span id="factoryCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="factory" onclick="buyStructures('factory')">Acheter une usine</button></td>
+                        <td><button onclick="sellStructures('factory')">Vendre une usine</button></td>
+                    </tr>
+                    <tr>
+                        <td>Bank</td>
+                        <td><span id="NbBank">0</span></td>
+                        <td><span id="bankCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="bank" onclick="buyStructures('bank')">Acheter une banque</button></td>
+                        <td><button onclick="sellStructures('bank')">Vendre une banque</button></td>
+                    </tr>
+                    <tr>
+                        <td>Temple</td>
+                        <td><span id="NbTemple">0</span></td>
+                        <td><span id="templeCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="temple" onclick="buyStructures('temple')">Acheter un temple</button></td>
+                        <td><button onclick="sellStructures('temple')">Vendre un temple</button></td>
+                    </tr>
+                    <tr>
+                        <td>Wizard Tower</td>
+                        <td><span id="NbWizardTower">0</span></td>
+                        <td><span id="wizardTowerCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="wizardTower" onclick="buyStructures('wizardTower')">Acheter une tour de sorcier</button></td>
+                        <td><button onclick="sellStructures('wizardTower')">Vendre une tour de sorcier</button></td>
+                    </tr>
+                    <tr>
+                        <td>Shipment</td>
+                        <td><span id="NbShipment">0</span></td>
+                        <td><span id="shipmentCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="shipment" onclick="buyStructures('shipment')">Acheter un navire</button></td>
+                        <td><button onclick="sellStructures('shipment')">Vendre un navire</button></td>
+                    </tr>
+                    <tr>
+                        <td>Alchemy Lab</td>
+                        <td><span id="NbAlchemyLab">0</span></td>
+                        <td><span id="alchemyLabCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="alchemyLab" onclick="buyStructures('alchemyLab')">Acheter un labo d'alchimie</button></td>
+                        <td><button onclick="sellStructures('alchemyLab')">Vendre un labo d'alchimie</button></td>
+                    </tr>
+                    <tr>
+                        <td>Portal</td>
+                        <td><span id="NbPortal">0</span></td>
+                        <td><span id="portalCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="portal" onclick="buyStructures('portal')">Acheter un portail</button></td>
+                        <td><button onclick="sellStructures('portal')">Vendre un portail</button></td>
+                    </tr>
+                    <tr>
+                        <td>Time Machine</td>
+                        <td><span id="NbTimeMachine">0</span></td>
+                        <td><span id="timeMachineCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="timeMachine" onclick="buyStructures('timeMachine')">Acheter une machine à remonter le temps</button></td>
+                        <td><button onclick="sellStructures('timeMachine')">Vendre une machine à remonter le temps</button></td>
+                    </tr>
+                    <tr>
+                        <td>Antimatter Condenser</td>
+                        <td><span id="NbAntimatterCondenser">0</span></td>
+                        <td><span id="antimatterCondenserCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="antimatterCondenser" onclick="buyStructures('antimatterCondenser')">Acheter un condensateur d'antimatière</button></td>
+                        <td><button onclick="sellStructures('antimatterCondenser')">Vendre un condensateur d'antimatière</button></td>
+                    </tr>
+                    <tr>
+                        <td>Prism</td>
+                        <td><span id="NbPrism">0</span></td>
+                        <td><span id="prismCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="prism" onclick="buyStructures('prism')">Acheter un prisme</button></td>
+                        <td><button onclick="sellStructures('prism')">Vendre un prisme</button></td>
+                    </tr>
+                    <tr>
+                        <td>Chancemaker</td>
+                        <td><span id="NbChancemaker">0</span></td>
+                        <td><span id="chancemakerCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="chancemaker" onclick="buyStructures('chancemaker')">Acheter un faiseur de chance</button></td>
+                        <td><button onclick="sellStructures('chancemaker')">Vendre un faiseur de chance</button></td>
+                    </tr>
+                    <tr>
+                        <td>Fractal Engine</td>
+                        <td><span id="NbFractalEngine">0</span></td>
+                        <td><span id="fractalEngineCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="fractalEngine" onclick="buyStructures('fractalEngine')">Acheter un moteur fractal</button></td>
+                        <td><button onclick="sellStructures('fractalEngine')">Vendre un moteur fractal</button></td>
+                    </tr>
+                    <tr>
+                        <td>Javascript Console</td>
+                        <td><span id="NbJavascriptConsole">0</span></td>
+                        <td><span id="javascriptConsoleCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="javascriptConsole" onclick="buyStructures('javascriptConsole')">Acheter une console javascript</button></td>
+                        <td><button onclick="sellStructures('javascriptConsole')">Vendre une console javascript</button></td>
+                    </tr>
+                    <tr>
+                        <td>Idleverse</td>
+                        <td><span id="NbIdleverse">0</span></td>
+                        <td><span id="idleverseCost">0</span></td>
+                        <td><button class="buyStructure btn btn-danger" disabled data-structure="idleverse" onclick="buyStructures('idleverse')">Acheter un idleverse</button></td>
+                        <td><button onclick="sellStructures('idleverse')">Vendre un idleverse</button></td>
+                    </tr>                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+    
+</body>
+</html>
+
+
