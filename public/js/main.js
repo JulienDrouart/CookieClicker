@@ -32,14 +32,13 @@ function majAth()
     $('#NbCookies').text(cookie.toFixed(1));
     $('#cookiePerSecond').text(cookiePerSecond.toFixed(1));
     
-    for (var structure in structures) {
+    for (let structure in structures) {
         $('#'+structure+'Cost').text(structures[structure].cost);
         $('#Nb' + structure.charAt(0).toUpperCase() + structure.slice(1)).text(structures[structure].number);
-        console.log()
         $('#' + structure + 'CPS').text((structures[structure].cps).toFixed(1));
     }
 
-    for(var perk in perks) {
+    for(let perk in perks) {
         if(perks[perk].condition() && !perks[perk].visible) {
             var perkButton = $('<button class="col-2 perk btn" data-perk="' + perk + '" title="' + perks[perk].description + '">' + perks[perk].name + ' (' + perks[perk].cost + ' cookies)</button>');
             perkButton.on('click', function() {
