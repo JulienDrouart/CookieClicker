@@ -2,6 +2,8 @@ var cookie = 0;
 var cookiePerClick = 1;
 var cookiePerSecond = 0;
 
+
+
 var structures = {
     cursor: {
         number: 0,
@@ -95,6 +97,23 @@ var structures = {
     },
 };
 
+var perks = {
+    betterCusor1 : {
+        cost: 100,
+        cps: 0.1,
+        condition : function() {
+            return structures.cursor.number >= 15;
+        },
+        visible: false,
+        active: false,
+        name: 'Better Cursor 1',
+        description: 'Curseur plus efficace, cps +0.1',
+        effect : function() {
+            cookiePerSecond += 0.1;
+        }
+    }
+}
+
 $(document).ready(function() {
     // Code to execute when the page is fully loaded
     majAth
@@ -120,7 +139,33 @@ function majAth()
         $('#Nb' + structure.charAt(0).toUpperCase() + structure.slice(1)).text(structures[structure].number);
     }
 
+    for(var perk in perks) {
+        if(perks[perk].condition() && !perks[perk].visible) {
+            var perkButton = $('<button class="col-2 perk btn" data-perk="' + perk + '" title="' + perks[perk].description + '">' + perks[perk].name + ' (' + perks[perk].cost + ' cookies)</button>');
+            perkButton.on('click', function() {
+                buyPerk(perk);
+            });
+            if (cookie >= perks[perk].cost) {
+                perkButton.addClass('btn-success');
+            } else {
+                perkButton.addClass('btn-danger');
+            }
+            $('#bonusList').append(perkButton);
+            perks[perk].visible = true;
+        }
+    }
+
     buyButtonColor();
+    buyPerkColor();
+}
+
+function buyPerk(perkName)
+{
+    cookie -= perks[perkName].cost;
+    perks[perkName].effect();
+    perks[perkName].active = true;
+    $('button[data-perk="' + perkName + '"]').remove();
+    majAth();
 }
 
 function buyStructures(structureName)
@@ -145,6 +190,22 @@ function buyButtonColor()
     $('.buyStructure').each(function() {
         var structureName = $(this).data('structure');
         if (cookie >= structures[structureName].cost) {
+            $(this).addClass('btn-success');
+            $(this).removeClass('btn-danger');
+            $(this).prop('disabled', false);
+        } else {
+            $(this).addClass('btn-danger');
+            $(this).removeClass('btn-success');
+            $(this).prop('disabled', true);
+        }
+    });
+}
+
+function buyPerkColor()
+{
+    $('.perk').each(function() {
+        var perkName = $(this).data('perk');
+        if (cookie >= perks[perkName].cost) {
             $(this).addClass('btn-success');
             $(this).removeClass('btn-danger');
             $(this).prop('disabled', false);
