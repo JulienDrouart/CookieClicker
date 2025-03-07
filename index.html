@@ -25,6 +25,7 @@
         </div>
         <div class="col">
             Column 2
+            
         </div>
         <div class="col">
            Listes des bonus
@@ -40,8 +41,9 @@
                 <thead>
                     <tr>
                         <th>Structure</th>
-                        <th>Prix</th>
                         <th>Nombre</th>
+                        <th>Prix</th>
+                        <th>CPS</th>
                         <th>Acheter</th>
                         <th>Vendre</th>
                     </tr>
@@ -51,6 +53,7 @@
                         <td>Cursor</td>
                         <td><span id="NbCursor">0</span></td>
                         <td><span id="cursorCost">0</span></td>
+                        <td><span id="cursorCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="cursor" onclick="buyStructures('cursor')">Acheter un cursor</button></td>
                         <td><button onclick="sellStructures('cursor')">Vendre un curseur</button></td>
                     </tr>
@@ -58,6 +61,7 @@
                         <td>Grandma</td>
                         <td><span id="NbGrandma">0</span></td>
                         <td><span id="grandmaCost">0</span></td>
+                        <td><span id="grandmaCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="grandma" onclick="buyStructures('grandma')">Acheter une grandma</button></td>
                         <td><button onclick="sellStructures('grandma')">Vendre une grand-mère</button></td>
                     </tr>
@@ -65,6 +69,7 @@
                         <td>Farm</td>
                         <td><span id="NbFarm">0</span></td>
                         <td><span id="farmCost">0</span></td>
+                        <td><span id="farmCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="farm" onclick="buyStructures('farm')">Acheter une ferme</button></td>
                         <td><button onclick="sellStructures('farm')">Vendre une ferme</button></td>
                     </tr>
@@ -72,6 +77,7 @@
                         <td>Mine</td>
                         <td><span id="NbMine">0</span></td>
                         <td><span id="mineCost">0</span></td>
+                        <td><span id="mineCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="mine" onclick="buyStructures('mine')">Acheter une mine</button></td>
                         <td><button onclick="sellStructures('mine')">Vendre une mine</button></td>
                     </tr>
@@ -79,6 +85,7 @@
                         <td>Factory</td>
                         <td><span id="NbFactory">0</span></td>
                         <td><span id="factoryCost">0</span></td>
+                        <td><span id="factoryCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="factory" onclick="buyStructures('factory')">Acheter une usine</button></td>
                         <td><button onclick="sellStructures('factory')">Vendre une usine</button></td>
                     </tr>
@@ -86,6 +93,7 @@
                         <td>Bank</td>
                         <td><span id="NbBank">0</span></td>
                         <td><span id="bankCost">0</span></td>
+                        <td><span id="bankCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="bank" onclick="buyStructures('bank')">Acheter une banque</button></td>
                         <td><button onclick="sellStructures('bank')">Vendre une banque</button></td>
                     </tr>
@@ -93,6 +101,7 @@
                         <td>Temple</td>
                         <td><span id="NbTemple">0</span></td>
                         <td><span id="templeCost">0</span></td>
+                        <td><span id="templeCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="temple" onclick="buyStructures('temple')">Acheter un temple</button></td>
                         <td><button onclick="sellStructures('temple')">Vendre un temple</button></td>
                     </tr>
@@ -100,6 +109,7 @@
                         <td>Wizard Tower</td>
                         <td><span id="NbWizardTower">0</span></td>
                         <td><span id="wizardTowerCost">0</span></td>
+                        <td><span id="wizardTowerCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="wizardTower" onclick="buyStructures('wizardTower')">Acheter une tour de sorcier</button></td>
                         <td><button onclick="sellStructures('wizardTower')">Vendre une tour de sorcier</button></td>
                     </tr>
@@ -107,6 +117,7 @@
                         <td>Shipment</td>
                         <td><span id="NbShipment">0</span></td>
                         <td><span id="shipmentCost">0</span></td>
+                        <td><span id="shipmentCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="shipment" onclick="buyStructures('shipment')">Acheter un navire</button></td>
                         <td><button onclick="sellStructures('shipment')">Vendre un navire</button></td>
                     </tr>
@@ -114,6 +125,7 @@
                         <td>Alchemy Lab</td>
                         <td><span id="NbAlchemyLab">0</span></td>
                         <td><span id="alchemyLabCost">0</span></td>
+                        <td><span id="alchemyLabCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="alchemyLab" onclick="buyStructures('alchemyLab')">Acheter un labo d'alchimie</button></td>
                         <td><button onclick="sellStructures('alchemyLab')">Vendre un labo d'alchimie</button></td>
                     </tr>
@@ -121,6 +133,7 @@
                         <td>Portal</td>
                         <td><span id="NbPortal">0</span></td>
                         <td><span id="portalCost">0</span></td>
+                        <td><span id="portalCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="portal" onclick="buyStructures('portal')">Acheter un portail</button></td>
                         <td><button onclick="sellStructures('portal')">Vendre un portail</button></td>
                     </tr>
@@ -128,6 +141,7 @@
                         <td>Time Machine</td>
                         <td><span id="NbTimeMachine">0</span></td>
                         <td><span id="timeMachineCost">0</span></td>
+                        <td><span id="timeMachineCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="timeMachine" onclick="buyStructures('timeMachine')">Acheter une machine à remonter le temps</button></td>
                         <td><button onclick="sellStructures('timeMachine')">Vendre une machine à remonter le temps</button></td>
                     </tr>
@@ -135,6 +149,7 @@
                         <td>Antimatter Condenser</td>
                         <td><span id="NbAntimatterCondenser">0</span></td>
                         <td><span id="antimatterCondenserCost">0</span></td>
+                        <td><span id="antimatterCondenserCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="antimatterCondenser" onclick="buyStructures('antimatterCondenser')">Acheter un condensateur d'antimatière</button></td>
                         <td><button onclick="sellStructures('antimatterCondenser')">Vendre un condensateur d'antimatière</button></td>
                     </tr>
@@ -142,6 +157,7 @@
                         <td>Prism</td>
                         <td><span id="NbPrism">0</span></td>
                         <td><span id="prismCost">0</span></td>
+                        <td><span id="prismCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="prism" onclick="buyStructures('prism')">Acheter un prisme</button></td>
                         <td><button onclick="sellStructures('prism')">Vendre un prisme</button></td>
                     </tr>
@@ -149,6 +165,7 @@
                         <td>Chancemaker</td>
                         <td><span id="NbChancemaker">0</span></td>
                         <td><span id="chancemakerCost">0</span></td>
+                        <td><span id="chancemakerCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="chancemaker" onclick="buyStructures('chancemaker')">Acheter un faiseur de chance</button></td>
                         <td><button onclick="sellStructures('chancemaker')">Vendre un faiseur de chance</button></td>
                     </tr>
@@ -156,6 +173,7 @@
                         <td>Fractal Engine</td>
                         <td><span id="NbFractalEngine">0</span></td>
                         <td><span id="fractalEngineCost">0</span></td>
+                        <td><span id="fractalEngineCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="fractalEngine" onclick="buyStructures('fractalEngine')">Acheter un moteur fractal</button></td>
                         <td><button onclick="sellStructures('fractalEngine')">Vendre un moteur fractal</button></td>
                     </tr>
@@ -163,6 +181,7 @@
                         <td>Javascript Console</td>
                         <td><span id="NbJavascriptConsole">0</span></td>
                         <td><span id="javascriptConsoleCost">0</span></td>
+                        <td><span id="javascriptConsoleCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="javascriptConsole" onclick="buyStructures('javascriptConsole')">Acheter une console javascript</button></td>
                         <td><button onclick="sellStructures('javascriptConsole')">Vendre une console javascript</button></td>
                     </tr>
@@ -170,6 +189,7 @@
                         <td>Idleverse</td>
                         <td><span id="NbIdleverse">0</span></td>
                         <td><span id="idleverseCost">0</span></td>
+                        <td><span id="idleverseCPS">0</span></td>
                         <td><button class="buyStructure btn btn-danger" disabled data-structure="idleverse" onclick="buyStructures('idleverse')">Acheter un idleverse</button></td>
                         <td><button onclick="sellStructures('idleverse')">Vendre un idleverse</button></td>
                     </tr>                    

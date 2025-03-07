@@ -102,14 +102,14 @@ var perks = {
         cost: 100,
         cps: 0.1,
         condition : function() {
-            return structures.cursor.number >= 15;
+            return structures.cursor.number >= 2;
         },
         visible: false,
         active: false,
         name: 'Better Cursor 1',
-        description: 'Curseur plus efficace, cps +0.1',
+        description: 'Curseur plus efficace, cps +0.1 chacun',
         effect : function() {
-            cookiePerSecond += 0.1;
+            structures.cursor.cps += this.cps;
         }
     }
 }
@@ -120,6 +120,10 @@ $(document).ready(function() {
 });
 
 setInterval(function() {
+    cookiePerSecond = 0;
+    for (var structure in structures) {
+        cookiePerSecond += structures[structure].number * structures[structure].cps;
+    }
     cookie += cookiePerSecond;
     majAth();
 }, 1000);
@@ -137,6 +141,8 @@ function majAth()
     for (var structure in structures) {
         $('#'+structure+'Cost').text(structures[structure].cost);
         $('#Nb' + structure.charAt(0).toUpperCase() + structure.slice(1)).text(structures[structure].number);
+        console.log()
+        $('#' + structure + 'CPS').text((structures[structure].cps).toFixed(1));
     }
 
     for(var perk in perks) {
